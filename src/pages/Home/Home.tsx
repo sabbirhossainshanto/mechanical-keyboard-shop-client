@@ -1,5 +1,6 @@
 import Container from "@/components/shared/Container";
 import ProductCard from "@/components/shared/ProductCard";
+import CustomersReview from "@/components/ui/home/CustomersReview";
 import FeaturedBrand from "@/components/ui/home/FeaturedBrand";
 import HeroSection from "@/components/ui/home/HeroSection";
 import ServiceAdvertisement from "@/components/ui/home/ServiceAdvertisement";
@@ -9,7 +10,6 @@ import { Button } from "antd";
 
 const Home = () => {
   const { data } = useGetAllProductQuery(undefined);
-  console.log(data);
   return (
     <div className="bg-[#f0f0f0] h-full">
       <Container>
@@ -29,6 +29,7 @@ const Home = () => {
           </div>
         </div>
         <FeaturedBrand />
+      <CustomersReview/>
       </Container>
     </div>
   );
