@@ -7,6 +7,7 @@ export type TChildren = {
 export type TProduct = {
   image: string;
   name: string;
+  description:string;
   brand: string;
   availableQuantity: number;
   price: number;

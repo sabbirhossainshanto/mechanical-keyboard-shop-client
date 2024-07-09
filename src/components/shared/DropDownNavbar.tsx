@@ -18,30 +18,30 @@ const DropDownNavbar = () => {
       <DropdownMenuContent className="w-56">
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <NavLink to="/" className="flex">
+            <NavLink to="/">
               <HomeIcon className="mr-2 h-4 w-4" />
               <span>Home</span>
             </NavLink>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <NavLink to="/" className="flex">
+          <DropdownMenuItem asChild>
+            <NavLink to="/products" className="flex">
               <HomeIcon className="mr-2 h-4 w-4" />
-              <span>Home</span>
+              <span>Products</span>
             </NavLink>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <NavLink to="/" className="flex">
+          <DropdownMenuItem asChild>
+            <NavLink to="/about-us" className="flex">
               <HomeIcon className="mr-2 h-4 w-4" />
-              <span>Home</span>
+              <span>About Us</span>
             </NavLink>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem asChild>
             <NavLink to="/contact" className="flex">
               <Contact className="mr-2 h-4 w-4" />
               <span>Contact</span>
             </NavLink>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem asChild>
             <NavLink to="/product-management-dashboard" className="flex">
               <Keyboard className="mr-2 h-4 w-4" />
               <span>Dashboard</span>

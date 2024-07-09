@@ -8,8 +8,11 @@ import { useGetAllProductQuery } from "@/redux/features/product/productApi";
 import { TProduct } from "@/types";
 import { Button } from "antd";
 
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
   const { data } = useGetAllProductQuery(undefined);
+  const navigate = useNavigate();
   return (
     <div className="bg-[#f0f0f0] h-full">
       <Container>
@@ -20,16 +23,16 @@ const Home = () => {
             Products
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {data?.data?.map((product: TProduct) => (
+            {data?.data?.slice(0, 6)?.map((product: TProduct) => (
               <ProductCard product={product} key={product._id} />
             ))}
           </div>
           <div className="py-10 flex items-center justify-center">
-            <Button>See More</Button>
+            <Button onClick={() => navigate("/products")}>See More</Button>
           </div>
         </div>
         <FeaturedBrand />
-      <CustomersReview/>
+        <CustomersReview />
       </Container>
     </div>
   );

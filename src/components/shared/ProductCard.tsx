@@ -10,8 +10,10 @@ import {
 import { TProduct } from "@/types";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }: { product: TProduct }) => {
+  const navigate = useNavigate();
   return (
     <Card className="w-full bg-white">
       <CardContent className="p-0">
@@ -37,7 +39,10 @@ const ProductCard = ({ product }: { product: TProduct }) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-end">
-        <Button className="bg-buttonPrimary border-none text-white text-lg font-semibold px-3  py-2 ">
+        <Button
+          onClick={() => navigate(`/product/${product._id}`)}
+          className="bg-buttonPrimary border-none text-white text-lg font-semibold px-3  py-2 "
+        >
           See Details
         </Button>
       </CardFooter>

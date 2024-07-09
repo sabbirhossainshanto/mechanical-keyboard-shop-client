@@ -16,6 +16,8 @@ import brand4 from "./images/brand4.webp";
 import brand5 from "./images/brand5.webp";
 import menu from './images/menu-bar.png'
 import customer from './images/customer.jpg'
+import plus from './images/plus.png'
+import minus from './images/minus.png'
 
 export default {
   cart,
@@ -29,5 +31,5 @@ export default {
   cashback,
   support,
   quick,
-  brand1,brand2,brand3,brand4,brand5,menu,customer
+  brand1,brand2,brand3,brand4,brand5,menu,customer,plus,minus
 };
