@@ -2,8 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import Container from "./Container";
 import assets from "@/assets";
 import DropDownNavbar from "./DropDownNavbar";
+import { useGetAllOrdersQuery } from "@/redux/features/order/orderApi";
 
 const Navbar = () => {
+  const { data } = useGetAllOrdersQuery(undefined);
+
   return (
     <Container>
       <header className="flex items-center justify-between bg-[#fdfeff] py-2">
@@ -76,7 +79,7 @@ const Navbar = () => {
 
         <div className="relative">
           <img className="size-10" src={assets.cart} alt="" />
-          <span className="badge">5</span>
+          <span className="badge">{data?.data?.length}</span>
         </div>
       </header>
     </Container>

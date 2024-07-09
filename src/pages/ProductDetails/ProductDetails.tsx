@@ -1,22 +1,47 @@
 import Container from "@/components/shared/Container";
+import { useCreateOrderMutation } from "@/redux/features/order/orderApi";
 import { useGetSingleProductQuery } from "@/redux/features/product/productApi";
 import { TProduct } from "@/types";
 import { Rating } from "@smastrom/react-rating";
 import { Button } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
   const { data: product, isLoading } = useGetSingleProductQuery(id as string);
-  const [quantity, setQuantity] = useState(0);
+  const [createOrder] = useCreateOrderMutation();
 
   if (isLoading) {
     return <div>Loading....</div>;
   }
   const { data }: { data: TProduct } = product;
+
+  const handleCreateOrder = (product: TProduct) => {
+    if (quantity <= 0) {
+      return toast.error("Please select at least one quantity!");
+    }
+    try {
+      const productData = {
+        productId: product._id,
+        price: product.price,
+        quantity,
+      };
+      createOrder(productData);
+      toast.success("Product ordered successful!");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
+    }
+  };
+
   return (
     <Container>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pb-5">
@@ -48,7 +73,7 @@ const ProductDetails = () => {
               value={product.rating}
             />
           </div>
-     
+
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-between px-10 py-3 border-[1px] border-gray-400 w-[200px] rounded-full mt-2">
               <button
@@ -64,7 +89,10 @@ const ProductDetails = () => {
               </button>
             </div>
 
-            <Button className="px-10 py-6 border-[1px] border-gray-400 w-[200px] rounded-full mt-2 bg-buttonPrimary text-white">
+            <Button
+              onClick={() => handleCreateOrder(data)}
+              className="px-10 py-6 border-[1px] border-gray-400 w-[200px] rounded-full mt-2 bg-buttonPrimary text-white"
+            >
               Add To Cart
             </Button>
           </div>
