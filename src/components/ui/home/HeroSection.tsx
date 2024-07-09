@@ -7,42 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import assets from "@/assets";
 import { Button } from "antd";
+import { sliderData } from "@/static/sliderData";
 const HeroSection = () => {
-  const sliderData = [
-    {
-      id: 3,
-      image: assets.banner4,
-      name: "Live Sales",
-      title: "Save on your next desk upgrade!",
-    },
-    {
-      id: 1,
-      image: assets.banner,
-      name: "Hot Dox V2 - Dark",
-      title: "Return of the popular Hot Dox V2, now in dark mode!",
-    },
-    {
-      id: 2,
-      image: assets.banner2,
-      name: "Titan65 Keyboard Kit",
-      title: "Aluminum or Brass cases in stunning white and black!",
-    },
-    {
-      id: 3,
-      image: assets.banner3,
-      name: "Discord TKL Mechanical Keyboard",
-      title: "On sale!",
-    },
-
-    {
-      id: 3,
-      image: assets.banner5,
-      name: "Discord Artisans",
-      title: "Resin and Metal Artisan's for Discord's cute mascots!",
-    },
-  ];
   return (
     <div className="relative w-full h-[500px] mt-6">
       <Carousel

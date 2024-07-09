@@ -28,6 +28,10 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        primaryBlack: "#030303",
+        secondaryBlack: "#161616",
+        accentBlack: "#2e2e2e",
+
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -53,6 +57,7 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -72,7 +77,11 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundColor: {
+        buttonPrimary: "#1e88e5",
+      },
     },
+  
   },
   plugins: [tailwindcssAnimate],
 };
