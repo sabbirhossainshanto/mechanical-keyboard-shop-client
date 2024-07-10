@@ -6,7 +6,7 @@ import { TProduct } from "@/types";
 const Products = () => {
   window.scrollTo(0, 0);
   const { data } = useGetAllProductQuery(undefined);
-  console.log(data);
+
   return (
     <Container>
       <div>

@@ -4,6 +4,8 @@ import {
   footerProductLinks,
   footerSupportLinks,
 } from "@/static/footerData";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import {
   AiFillFacebook,
   AiFillInstagram,
@@ -13,6 +15,14 @@ import {
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const handleSubmit = () => {
+    if (email?.length === 0) {
+      toast.error("Email is required!");
+    } else {
+      toast.success("Welcome to our KEYGEM shop!");
+    }
+  };
   return (
     <div className="bg-[#000] text-white">
       <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#342ac8] py-7">
@@ -23,13 +33,17 @@ const Footer = () => {
         </h1>
         <div>
           <input
+            onChange={(e) => setEmail(e.target.value)}
             type="text"
             required
             placeholder="Enter your email..."
             className="text-gray-800
                   sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 focus:outline-none"
           />
-          <button className="bg-[#56d879] hover:bg-teal-500 duration-300 px-5 py-2.5 rounded-md text-whie md:w-auto w-full">
+          <button
+            onClick={handleSubmit}
+            className="bg-[#56d879] hover:bg-teal-500 duration-300 px-5 py-2.5 rounded-md text-whie md:w-auto w-full"
+          >
             Submit
           </button>
         </div>
@@ -40,7 +54,7 @@ const Footer = () => {
             src={assets.logo}
             className="size-20 object-contain"
             alt=""
-            style={{ filter: "brightness(1) invert(1)", }}
+            style={{ filter: "brightness(1) invert(1)" }}
           />
           <br />
           <p>The home and elements needed to create beautiful products.</p>

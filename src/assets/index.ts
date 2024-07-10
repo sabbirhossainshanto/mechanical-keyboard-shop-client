@@ -14,10 +14,13 @@ import brand2 from "./images/brand2.webp";
 import brand3 from "./images/brand3.webp";
 import brand4 from "./images/brand4.webp";
 import brand5 from "./images/brand5.webp";
-import menu from './images/menu-bar.png'
-import customer from './images/customer.jpg'
-import plus from './images/plus.png'
-import minus from './images/minus.png'
+import menu from "./images/menu-bar.png";
+import customer from "./images/customer.jpg";
+import plus from "./images/plus.png";
+import minus from "./images/minus.png";
+import deleteImg from "./images/delete.png";
+import update from "./images/update.png";
+import add from "./images/add.png";
 
 export default {
   cart,
@@ -31,5 +34,16 @@ export default {
   cashback,
   support,
   quick,
-  brand1,brand2,brand3,brand4,brand5,menu,customer,plus,minus
+  brand1,
+  brand2,
+  brand3,
+  brand4,
+  brand5,
+  menu,
+  customer,
+  plus,
+  minus,
+  deleteImg,
+  update,
+  add,
 };

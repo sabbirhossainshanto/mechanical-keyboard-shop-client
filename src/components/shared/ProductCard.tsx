@@ -41,7 +41,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
       <CardFooter className="flex justify-end">
         <Button
           onClick={() => navigate(`/product/${product._id}`)}
-          className="bg-buttonPrimary border-none text-white text-lg font-semibold px-3  py-2 "
+          className="bg-buttonPrimary border-none text-white text-base font-medium px-2  py-1 "
         >
           See Details
         </Button>

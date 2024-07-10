@@ -5,12 +5,25 @@ export type TChildren = {
 };
 
 export type TProduct = {
-  image: string;
+  _id: string;
   name: string;
-  description:string;
+  image: string;
   brand: string;
-  availableQuantity: number;
   price: number;
+  availableQuantity: number;
   rating: number;
-  _id:string
+  createdAt: string;
+  updatedAt: string;
+  description: string;
+  isDeleted: boolean;
+};
+
+export type TOrder = {
+  _id: string;
+  productId: TProduct;
+  price: number;
+  quantity: number;
+  isDeleted: boolean;
+  createdAt: string;
+  updatedAt: string;
 };

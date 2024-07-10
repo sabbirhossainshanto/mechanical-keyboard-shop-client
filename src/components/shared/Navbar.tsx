@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Container from "./Container";
 import assets from "@/assets";
 import DropDownNavbar from "./DropDownNavbar";
@@ -6,6 +6,7 @@ import { useGetAllOrdersQuery } from "@/redux/features/order/orderApi";
 
 const Navbar = () => {
   const { data } = useGetAllOrdersQuery(undefined);
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -77,7 +78,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className="relative">
+        <div className="relative cursor-pointer" onClick={() => navigate("/cart")}>
           <img className="size-10" src={assets.cart} alt="" />
           <span className="badge">{data?.data?.length}</span>
         </div>
