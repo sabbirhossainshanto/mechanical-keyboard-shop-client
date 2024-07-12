@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+## Mechanical-keyboard-shop-server
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Mechanical-keyboard-shop-Live-URL[(https://mechanical-keyboard-shop-bay.vercel.app/)]
 
-Currently, two official plugins are available:
+## How you can run the project locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```tsx
+ npm i                      //For install all the dependencies
+ npm run dev                //For run the project in typescript locally--> ts-node-dev)
+ npm run build              //for build project typescript to Java Script
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Technology Stack:
+
+- Used Vite with TypeScript.
+- Used shadcn-ui + antd for ui library.
+- Used tailwind css.
+- Used react-hook-form for form, react-hot-toast and sweetallert for notification.
+- Used React router dom for routes. etc
+
+## Features
+
+- User can see products, they can search and sort product.
+- User can add product to cart. They can update the quantity in the card also they can delete the product from card.
+- User can buy products
+- User can manage product in dashboard, They can add,edit and delete product

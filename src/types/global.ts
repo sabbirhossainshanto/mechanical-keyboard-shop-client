@@ -18,9 +18,9 @@ export type TProduct = {
   isDeleted: boolean;
 };
 
-export type TOrder = {
+export type TBookmark = {
   _id: string;
-  productId: TProduct;
+  product: TProduct;
   price: number;
   quantity: number;
   isDeleted: boolean;

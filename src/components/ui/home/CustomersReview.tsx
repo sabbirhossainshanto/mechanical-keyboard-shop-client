@@ -11,7 +11,7 @@ import { customerReview } from "@/static/customerReview";
 import { Rating } from "@smastrom/react-rating";
 const CustomersReview = () => {
   return (
-    <div className="relative w-full h-[500px] mt-6">
+    <div className="relative w-full h-[400px] mt-6">
       <h1 className="text-3xl text-secondaryBlack font-bold py-5">
         Customers Reviews
       </h1>

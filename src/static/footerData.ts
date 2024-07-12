@@ -1,7 +1,7 @@
 export const footerProductLinks = [
   {
     name: "About us",
-    link: "/",
+    link: "/about-us",
   },
   {
     name: "Careers",
@@ -55,7 +55,7 @@ export const footerSupportLinks = [
   },
   {
     name: "Contact Us",
-    link: "/",
+    link: "/contact-us",
   },
   {
     name: "Shipping",

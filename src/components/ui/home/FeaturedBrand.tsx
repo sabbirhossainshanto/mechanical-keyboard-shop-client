@@ -5,7 +5,7 @@ const FeaturedBrand = () => {
   return (
     <div className="pb-20">
       <h1 className="text-3xl text-secondaryBlack font-bold py-5">
-        Featured Brand
+     Top Featured Brand
       </h1>
       <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-5 gap-2">
         {featuredBrand.map((item) => {

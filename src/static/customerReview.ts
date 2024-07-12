@@ -12,14 +12,14 @@ export const customerReview = [
     id: 2,
     name: "Jane Smith",
     review: "Great service and the quality is top-notch. Highly recommend!",
-    image: assets.customer,
+    image: assets.customer1,
     rating: 4,
   },
   {
     id: 3,
     name: "Emily Johnson",
     review: "I am very satisfied with my purchase. Will definitely buy again.",
-    image: assets.customer,
+    image: assets.customer2,
     rating: 5,
   },
   {

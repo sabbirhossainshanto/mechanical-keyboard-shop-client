@@ -13,7 +13,7 @@ const DropDownNavbar = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <img className="size-10" src={assets.menu} alt="" />
+        <img className="size-10 cursor-pointer" src={assets.menu} alt="" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuGroup>
@@ -36,9 +36,9 @@ const DropDownNavbar = () => {
             </NavLink>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <NavLink to="/contact" className="flex">
+            <NavLink to="/contact-us" className="flex">
               <Contact className="mr-2 h-4 w-4" />
-              <span>Contact</span>
+              <span>Contact Us</span>
             </NavLink>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>

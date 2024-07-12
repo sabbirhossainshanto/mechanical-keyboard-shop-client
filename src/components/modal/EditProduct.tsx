@@ -2,57 +2,165 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
-import assets from "@/assets";
 
-const EditProduct = () => {
+import { FieldValues, useForm } from "react-hook-form";
+import {
+  useGetSingleProductQuery,
+  useUpdateSingleProductMutation,
+} from "@/redux/features/product/productApi";
+import toast from "react-hot-toast";
+
+type TEditProduct = {
+  openEditModal: boolean;
+  setOpenEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  productId: string;
+};
+
+const UpdateProduct = ({
+  openEditModal,
+  setOpenEditModal,
+  productId,
+}: TEditProduct) => {
+  const { data: product } = useGetSingleProductQuery(productId);
+
+  const [updateProduct] = useUpdateSingleProductMutation();
+  const { register, handleSubmit } = useForm();
+  const handleUpdateProduct = async (data: FieldValues) => {
+    try {
+      const payload: Record<string, unknown> = {};
+      Object.keys(data).forEach((key) => {
+        if (data[key] !== undefined && data[key] !== null && data[key] !== "") {
+          if (
+            key === "availableQuantity" ||
+            key === "price" ||
+            key === "rating"
+          ) {
+            payload[key] = parseFloat(data[key]);
+          } else {
+            payload[key] = data[key];
+          }
+        }
+      });
+
+      const newProduct = await updateProduct({
+        payload,
+        id: product?._id,
+      }).unwrap();
+      console.log(newProduct);
+      if (newProduct?.success) {
+        toast.success(newProduct?.message);
+        setOpenEditModal(false);
+      } else {
+        toast.error(newProduct?.message);
+      }
+    } catch (error: any) {
+      toast.error(error.data?.message);
+    }
+  };
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <img className="size-8 cursor-pointer" src={assets.update} alt="" />
-      </DialogTrigger>
+    <Dialog open={openEditModal} onOpenChange={setOpenEditModal}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Product</DialogTitle>
+          <DialogTitle>Update Product</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your product here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <form
+          onSubmit={handleSubmit(handleUpdateProduct)}
+          className="grid gap-4 py-4"
+        >
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
             <Input
+              defaultValue={product?.name}
+              {...register("name")}
               id="name"
-              defaultValue="Pedro Duarte"
               className="col-span-3"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
+            <Label htmlFor="image" className="text-right">
+              Image
             </Label>
             <Input
-              id="username"
-              defaultValue="@peduarte"
+              defaultValue={product?.image}
+              {...register("image")}
+              id="image"
               className="col-span-3"
             />
           </div>
-        </div>
-        <DialogFooter>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="brand" className="text-right">
+              Brand
+            </Label>
+            <Input
+              defaultValue={product?.brand}
+              {...register("brand")}
+              id="brand"
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="price" className="text-right">
+              Price
+            </Label>
+            <Input
+              type="number"
+              defaultValue={product?.price}
+              {...register("price")}
+              id="price"
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="availableQuantity" className="text-right">
+              Quantity
+            </Label>
+            <Input
+              type="number"
+              defaultValue={product?.availableQuantity}
+              {...register("availableQuantity")}
+              id="availableQuantity"
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="rating" className="text-right">
+              Rating
+            </Label>
+            <Input
+              type="number"
+              defaultValue={product?.rating}
+              {...register("rating")}
+              id="rating"
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="description" className="text-right">
+              Description
+            </Label>
+            <Input
+              defaultValue={product?.description}
+              {...register("description")}
+              id="description"
+              className="col-span-3"
+            />
+          </div>
           <Button type="submit">Save changes</Button>
-        </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );
 };
 
-export default EditProduct;
+export default UpdateProduct;

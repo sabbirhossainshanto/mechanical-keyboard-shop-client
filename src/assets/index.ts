@@ -21,8 +21,21 @@ import minus from "./images/minus.png";
 import deleteImg from "./images/delete.png";
 import update from "./images/update.png";
 import add from "./images/add.png";
+import stripe from "./images/stripe.png";
+import cashOn from "./images/cash-on-delivery.png";
+import downChevron from "./images/down-chevron.png";
+import success from './images/checked.png'
+import customer1 from './images/customer1.jpg'
+import customer2 from './images/customer2.avif'
+import question from './images/questions.png'
+import thinking from './images/thinking.png'
+
 
 export default {
+  question,
+  thinking,
+  customer2,
+  customer1,
   cart,
   logo,
   banner,
@@ -46,4 +59,5 @@ export default {
   deleteImg,
   update,
   add,
+  stripe,cashOn,downChevron,success
 };

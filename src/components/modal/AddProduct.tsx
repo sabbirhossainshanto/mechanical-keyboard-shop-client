@@ -2,20 +2,20 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "../ui/button";
-import assets from "@/assets";
 import { FieldValues, useForm } from "react-hook-form";
 import { useCreateProductMutation } from "@/redux/features/product/productApi";
 import toast from "react-hot-toast";
-
-const AddProduct = () => {
+import { Button } from "../ui/button";
+type TEditProduct = {
+  openAddModal: boolean;
+  setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const AddProduct = ({ openAddModal, setOpenAddModal }: TEditProduct) => {
   const [createProduct] = useCreateProductMutation();
   const { register, handleSubmit } = useForm();
   const handleAddProduct = async (data: FieldValues) => {
@@ -29,21 +29,18 @@ const AddProduct = () => {
         price: parseFloat(data?.price),
         rating: parseFloat(data?.rating),
       };
+
       const newProduct = await createProduct(product).unwrap();
       if (newProduct?.success) {
+        setOpenAddModal(false);
         toast.success(newProduct?.message);
-      } else {
-        toast.error(newProduct?.message);
       }
     } catch (error: any) {
       toast.error(error.data?.message);
     }
   };
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <img className="size-8 cursor-pointer" src={assets.add} alt="" />
-      </DialogTrigger>
+    <Dialog open={openAddModal} onOpenChange={setOpenAddModal}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add Product</DialogTitle>
@@ -59,32 +56,50 @@ const AddProduct = () => {
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input {...register("name")} id="name" className="col-span-3" />
+            <Input
+              {...register("name", { required: true })}
+              id="name"
+              className="col-span-3"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="image" className="text-right">
               Image
             </Label>
-            <Input {...register("image")} id="image" className="col-span-3" />
+            <Input
+              {...register("image", { required: true })}
+              id="image"
+              className="col-span-3"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="brand" className="text-right">
               Brand
             </Label>
-            <Input {...register("brand")} id="brand" className="col-span-3" />
+            <Input
+              {...register("brand", { required: true })}
+              id="brand"
+              className="col-span-3"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="price" className="text-right">
               Price
             </Label>
-            <Input {...register("price")} id="price" className="col-span-3" />
+            <Input
+              type="number"
+              {...register("price", { required: true })}
+              id="price"
+              className="col-span-3"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="availableQuantity" className="text-right">
               Quantity
             </Label>
             <Input
-              {...register("availableQuantity")}
+              type="number"
+              {...register("availableQuantity", { required: true })}
               id="availableQuantity"
               className="col-span-3"
             />
@@ -93,21 +108,24 @@ const AddProduct = () => {
             <Label htmlFor="rating" className="text-right">
               Rating
             </Label>
-            <Input {...register("rating")} id="rating" className="col-span-3" />
+            <Input
+              {...register("rating", { required: true })}
+              id="rating"
+              type="number"
+              className="col-span-3"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="description" className="text-right">
               Description
             </Label>
             <Input
-              {...register("description")}
+              {...register("description", { required: true })}
               id="description"
               className="col-span-3"
             />
           </div>
-          <DialogFooter>
-            <Button type="submit">Save changes</Button>
-          </DialogFooter>
+          <Button type="submit">Save changes</Button>
         </form>
       </DialogContent>
     </Dialog>
