@@ -40,8 +40,8 @@ const AddProduct = ({ openAddModal, setOpenAddModal }: TEditProduct) => {
     }
   };
   return (
-    <Dialog open={openAddModal} onOpenChange={setOpenAddModal}>
-      <DialogContent className="sm:max-w-[425px]">
+    <Dialog open={openAddModal} onOpenChange={setOpenAddModal} >
+      <DialogContent className="sm:max-w-[425px] overflow-y-scroll">
         <DialogHeader>
           <DialogTitle>Add Product</DialogTitle>
           <DialogDescription>

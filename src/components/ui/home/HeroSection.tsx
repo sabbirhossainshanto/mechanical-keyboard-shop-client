@@ -31,10 +31,10 @@ const HeroSection = () => {
                     alt=""
                   />
                   <div className="absolute left-[20%] space-y-4">
-                    <h1 className="bg-[#3335] px-10 py-4 text-white font-extrabold text-4xl rounded-md">
+                    <h1 className="bg-[#3335] px-10 py-4 text-white font-extrabold text-lg sm:text-4xl rounded-md">
                       {slider.name}
                     </h1>
-                    <p className="bg-[#3335] px-10 py-1 text-white font-semibold text-lg rounded-md h-auto">
+                    <p className="bg-[#3335] px-10 py-1 text-white font-semibold text-base sm:text-lg rounded-md h-auto">
                       {slider.title}
                     </p>
                     <Button className="bg-[#1e88e5] border-none text-white text-lg font-semibold px-10  py-6 ">

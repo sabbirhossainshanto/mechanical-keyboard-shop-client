@@ -1,8 +1,29 @@
-## Mechanical-keyboard-shop-server
+## Mechanical-keyboard-shop
 
 ## Mechanical-keyboard-shop-Live-URL[(https://mechanical-keyboard-shop-bay.vercel.app/)]
 
-## How you can run the project locally
+## Introduction
+
+Welcome to the Mechanical Keyboard Shop! This is an e-commerce platform dedicated to mechanical keyboard enthusiasts. Built using React, Redux, Mongoose, and Express, our website offers seamless product browsing, detailed product pages, and an intuitive cart system. Administrators can efficiently manage products, while users can enjoy fast searches, page refresh warnings, and robust filtering options. Our secure payment system ensures a safe and convenient shopping experience.
+
+## Project Description
+
+This project aims to provide a modern, user-friendly online store for mechanical keyboard enthusiasts. Our goal is to create an engaging and efficient shopping experience with comprehensive tools for both users and administrators.
+
+## Features
+
+Product Browsing: Users can view, search, and sort products effortlessly.
+Cart Management: Users can add products to the cart, update quantities, and remove items.
+Purchasing: Users can securely buy products.
+Admin Dashboard: Administrators can add, edit, and delete products.
+
+## Technology Stack
+
+Frontend: Vite, TypeScript, React, Redux, shadcn-ui, antd, Tailwind CSS, react-hook-form, react-hot-toast, sweetalert, React Router DOM
+Backend: Express, Mongoose
+Database: MongoDB
+
+## Installation Guideline
 
 ```tsx
  npm i                      //For install all the dependencies
@@ -11,17 +32,7 @@
 
 ```
 
-## Technology Stack:
+### Prerequisites
 
-- Used Vite with TypeScript.
-- Used shadcn-ui + antd for ui library.
-- Used tailwind css.
-- Used react-hook-form for form, react-hot-toast and sweetallert for notification.
-- Used React router dom for routes. etc
-
-## Features
-
-- User can see products, they can search and sort product.
-- User can add product to cart. They can update the quantity in the card also they can delete the product from card.
-- User can buy products
-- User can manage product in dashboard, They can add,edit and delete product
+-Node.js
+-npm or yarn
