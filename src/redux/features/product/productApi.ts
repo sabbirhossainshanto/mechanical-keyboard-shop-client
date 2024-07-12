@@ -16,9 +16,15 @@ const productApi = baseApi.injectEndpoints({
         const params = new URLSearchParams();
         if (query?.searchTerm) {
           params.append("searchTerm", query.searchTerm);
-        } 
+        }
         if (query?.sort) {
           params.append("sort", query.sort);
+        }
+        if (query?.minPrice) {
+          params.append("minPrice", query.minPrice);
+        }
+        if (query?.maxPrice) {
+          params.append("maxPrice", query.maxPrice);
         }
         return {
           url: "/products",

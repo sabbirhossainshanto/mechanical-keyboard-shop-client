@@ -15,11 +15,15 @@ type TProps = {
     React.SetStateAction<{
       searchTerm: string;
       sort: string;
+      minPrice:string;
+      maxPrice:string
     }>
   >;
   query: {
     searchTerm: string;
     sort: string;
+    minPrice:string;
+    maxPrice:string
   };
 };
 

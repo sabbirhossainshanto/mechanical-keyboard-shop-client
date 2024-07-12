@@ -14,6 +14,8 @@ const Products = () => {
   const [query, setQuery] = useState({
     searchTerm: "",
     sort: "",
+    minPrice: "",
+    maxPrice: "",
   });
   const debouncedSearchTerm = useDebounce(query.searchTerm, 500);
   const debouncedQuery = {
@@ -30,22 +32,47 @@ const Products = () => {
     <Container>
       <div className="pt-14">
         <div className="flex items-center justify-between">
-          <div className="flex items-center justify-center bg-gray-300 w-full py-3 rounded-full">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="flex items-center justify-center bg-gray-300 w-full py-10 sm:py-3 rounded-full ">
+            <div className="grid grid-cols-1 sm:grid-cols-5 gap-5">
               <Input
                 onChange={(e) =>
                   setQuery({ ...query, searchTerm: e.target.value })
                 }
-                className="w-auto sm:w-[250px]"
+                className="w-auto"
                 type="email"
                 placeholder="Search Products By Name, Brand"
                 value={query.searchTerm}
               />
-              <SortProduct setQuery={setQuery} query={query} />
 
+              <Input
+                onChange={(e) =>
+                  setQuery({ ...query, minPrice: e.target.value })
+                }
+                className="w-auto"
+                type="number"
+                placeholder="Min Price"
+                value={query.minPrice}
+              />
+              <Input
+                onChange={(e) =>
+                  setQuery({ ...query, maxPrice: e.target.value })
+                }
+                className="w-auto"
+                type="number"
+                placeholder="Max Price"
+                value={query.maxPrice}
+              />
+              <SortProduct setQuery={setQuery} query={query} />
               <Button
-                className="text-base font-semibold"
-                onClick={() => setQuery({ searchTerm: "", sort: "" })}
+                className="text-base font-semibold py-[16px]"
+                onClick={() =>
+                  setQuery({
+                    searchTerm: "",
+                    sort: "",
+                    minPrice: "",
+                    maxPrice: "",
+                  })
+                }
               >
                 Reset
               </Button>

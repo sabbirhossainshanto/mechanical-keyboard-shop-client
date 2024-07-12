@@ -24,7 +24,7 @@ const ProductDetails = () => {
     return <Loader />;
   }
 
-  const handleCreateOrder = (product: TProduct) => {
+  const handleCreateOrder = async (product: TProduct) => {
     if (quantity <= 0) {
       return toast.error("Please select at least one quantity!");
     }
@@ -34,12 +34,12 @@ const ProductDetails = () => {
         price: product.price,
         quantity,
       };
-      createOrder(productData);
-      toast.success("Product added to cart successful!");
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        toast.error(error.message);
+      const result = await createOrder(productData).unwrap();
+      if (result?.success) {
+        toast.success(result.message);
       }
+    } catch (error: any) {
+      toast.error(error?.data?.message);
     }
   };
 
